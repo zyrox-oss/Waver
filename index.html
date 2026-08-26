@@ -9,7 +9,23 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 10%,#24103b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
 button,input{font:inherit}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{padding:24px 18px;border-right:1px solid var(--line);background:#09090e;display:flex;flex-direction:column}.logo{font-size:28px;font-weight:800;margin:4px 12px 35px}.logo span{color:var(--pink)}.nav button{width:100%;padding:15px 14px;margin:3px 0;border:0;border-radius:12px;background:transparent;color:#ddd;text-align:left;cursor:pointer}.nav button:hover,.nav .active{background:#17141e;color:#fff}.badge{float:right;background:var(--pink);border-radius:20px;padding:2px 8px;font-size:12px}.sidecard{margin-top:auto;padding:18px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#15101c,#0d0d12)}.sidecard h3{margin:0;color:#ff4c99}.sidecard p{color:var(--muted);line-height:1.5}.main{padding:22px 30px;max-width:1250px;width:100%;margin:auto}.top{display:flex;gap:16px;align-items:center;margin-bottom:22px}.search{flex:1;background:#0d0d13;border:1px solid var(--line);border-radius:12px;padding:14px 17px;color:white;outline:none}.top button,.outline{background:#0e0e15;color:#fff;border:1px solid var(--line);padding:12px 18px;border-radius:10px;cursor:pointer}.primary{border:0!important;background:linear-gradient(90deg,var(--pink),var(--purple))!important;color:white!important;font-weight:700}.hero{padding:35px 40px;border:1px solid #33213f;border-radius:18px;background:radial-gradient(circle at 80% 50%,#3b1454 0,transparent 30%),linear-gradient(120deg,#101016,#100c16);display:flex;justify-content:space-between;align-items:center;overflow:hidden}.hero h1{font-size:42px;line-height:1.05;margin:0 0 14px}.hero h1 span{color:#ff2c88}.hero p{color:#b5b4c0;max-width:560px;line-height:1.6}.waveicon{font-size:100px;filter:drop-shadow(0 0 25px #ff27a0);padding:20px 70px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:28px 0 14px}.sectionhead h2{font-size:21px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:linear-gradient(160deg,#121219,#0c0c11);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}.avatar{width:92px;height:92px;border-radius:50%;margin:auto auto 12px;display:grid;place-items:center;font-size:32px;font-weight:800;background:linear-gradient(135deg,#5220a0,#ff2780);border:3px solid #282034}.online{font-size:12px;color:#62e58d}.handle,.bio{color:var(--muted)}.bio{min-height:42px;font-size:14px;line-height:1.45}.socials{margin:15px 0;color:#d7c8ff;font-size:13px}.wave{width:100%;padding:12px;border:0;border-radius:10px;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;font-weight:800;cursor:pointer}.wave.waved{background:#272331}.waves{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0d0d13}.waveRow{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line)}.waveRow:last-child{border:0}.mini{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#4b237e}.waveRow .who{flex:1}.waveRow small{color:var(--muted)}.empty{display:none;text-align:center;color:var(--muted);padding:30px}.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalbox{width:min(500px,100%);background:#111119;border:1px solid var(--line);border-radius:18px;padding:25px}.modalbox input,.modalbox textarea{width:100%;margin:8px 0 14px;padding:12px;border-radius:10px;border:1px solid var(--line);background:#09090e;color:white}.close{float:right;background:none;border:0;color:#aaa;font-size:24px;cursor:pointer}@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{display:none}.cards{grid-template-columns:repeat(2,1fr)}.hero{padding:28px}.waveicon{display:none}}@media(max-width:560px){.main{padding:15px}.cards{grid-template-columns:1fr}.top .outline{display:none}.hero h1{font-size:32px}}
 </style>
-</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+  const SUPABASE_URL = "https://fcxrmfjwmpgbwomkxkvu.supabase.co";
+
+  const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
+
+  const supabase = window.supabase.createClient(
+
+    SUPABASE_URL,
+
+    SUPABASE_KEY
+
+  );
+
+</script></head>
 <body>
 <div class="app">
 <aside class="sidebar">
