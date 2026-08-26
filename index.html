@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waver — Wave. Connect. Grow.</title>
+<style>
+:root{--bg:#07070b;--panel:#101016;--panel2:#15151e;--line:#282834;--text:#f7f7fb;--muted:#a7a7b5;--pink:#ff247f;--purple:#8d38ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 10%,#24103b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+button,input{font:inherit}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{padding:24px 18px;border-right:1px solid var(--line);background:#09090e;display:flex;flex-direction:column}.logo{font-size:28px;font-weight:800;margin:4px 12px 35px}.logo span{color:var(--pink)}.nav button{width:100%;padding:15px 14px;margin:3px 0;border:0;border-radius:12px;background:transparent;color:#ddd;text-align:left;cursor:pointer}.nav button:hover,.nav .active{background:#17141e;color:#fff}.badge{float:right;background:var(--pink);border-radius:20px;padding:2px 8px;font-size:12px}.sidecard{margin-top:auto;padding:18px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,#15101c,#0d0d12)}.sidecard h3{margin:0;color:#ff4c99}.sidecard p{color:var(--muted);line-height:1.5}.main{padding:22px 30px;max-width:1250px;width:100%;margin:auto}.top{display:flex;gap:16px;align-items:center;margin-bottom:22px}.search{flex:1;background:#0d0d13;border:1px solid var(--line);border-radius:12px;padding:14px 17px;color:white;outline:none}.top button,.outline{background:#0e0e15;color:#fff;border:1px solid var(--line);padding:12px 18px;border-radius:10px;cursor:pointer}.primary{border:0!important;background:linear-gradient(90deg,var(--pink),var(--purple))!important;color:white!important;font-weight:700}.hero{padding:35px 40px;border:1px solid #33213f;border-radius:18px;background:radial-gradient(circle at 80% 50%,#3b1454 0,transparent 30%),linear-gradient(120deg,#101016,#100c16);display:flex;justify-content:space-between;align-items:center;overflow:hidden}.hero h1{font-size:42px;line-height:1.05;margin:0 0 14px}.hero h1 span{color:#ff2c88}.hero p{color:#b5b4c0;max-width:560px;line-height:1.6}.waveicon{font-size:100px;filter:drop-shadow(0 0 25px #ff27a0);padding:20px 70px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:28px 0 14px}.sectionhead h2{font-size:21px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:linear-gradient(160deg,#121219,#0c0c11);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}.avatar{width:92px;height:92px;border-radius:50%;margin:auto auto 12px;display:grid;place-items:center;font-size:32px;font-weight:800;background:linear-gradient(135deg,#5220a0,#ff2780);border:3px solid #282034}.online{font-size:12px;color:#62e58d}.handle,.bio{color:var(--muted)}.bio{min-height:42px;font-size:14px;line-height:1.45}.socials{margin:15px 0;color:#d7c8ff;font-size:13px}.wave{width:100%;padding:12px;border:0;border-radius:10px;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;font-weight:800;cursor:pointer}.wave.waved{background:#272331}.waves{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0d0d13}.waveRow{display:flex;align-items:center;gap:14px;padding:15px 18px;border-bottom:1px solid var(--line)}.waveRow:last-child{border:0}.mini{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#4b237e}.waveRow .who{flex:1}.waveRow small{color:var(--muted)}.empty{display:none;text-align:center;color:var(--muted);padding:30px}.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modalbox{width:min(500px,100%);background:#111119;border:1px solid var(--line);border-radius:18px;padding:25px}.modalbox input,.modalbox textarea{width:100%;margin:8px 0 14px;padding:12px;border-radius:10px;border:1px solid var(--line);background:#09090e;color:white}.close{float:right;background:none;border:0;color:#aaa;font-size:24px;cursor:pointer}@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{display:none}.cards{grid-template-columns:repeat(2,1fr)}.hero{padding:28px}.waveicon{display:none}}@media(max-width:560px){.main{padding:15px}.cards{grid-template-columns:1fr}.top .outline{display:none}.hero h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo">👋 <span>Waver</span></div>
+  <div class="nav">
+    <button class="active">⌂ &nbsp; Explore</button>
+    <button onclick="scrollToWaves()">👋 &nbsp; Waves <span class="badge" id="waveBadge">0</span></button>
+    <button onclick="openProfile()">♙ &nbsp; Profile</button>
+    <button onclick="scrollToWaves()">♧ &nbsp; Notifications</button>
+    <button>⚙ &nbsp; Settings</button>
+  </div>
+  <div class="sidecard"><h3>Wave. Connect. Grow.</h3><p>Meet new people, make friends, and grow your network — one wave at a time.</p><button class="primary" style="width:100%;padding:12px;border-radius:10px" onclick="openProfile()">Create your profile</button></div>
+</aside>
+
+<main class="main">
+  <div class="top">
+    <input id="search" class="search" placeholder="Search users..." oninput="filterUsers()">
+    <button class="outline" onclick="openProfile()">Log In</button>
+    <button class="primary" onclick="openProfile()">Sign Up</button>
+  </div>
+
+  <section class="hero">
+    <div><h1>Meet new people.<br>Just <span>Wave.</span></h1><p>Wave at someone you'd like to connect with. If they wave back, you can follow each other or become friends.</p><button class="primary" style="padding:13px 22px;border-radius:10px" onclick="document.getElementById('people').scrollIntoView({behavior:'smooth'})">Start Exploring 👋</button></div>
+    <div class="waveicon">👋</div>
+  </section>
+
+  <div class="sectionhead" id="people"><h2>Explore People</h2><select id="sort" class="outline" onchange="sortUsers()"><option>Newest</option><option>Name A–Z</option></select></div>
+  <section class="cards" id="cards"></section>
+
+  <div class="sectionhead" id="waves"><h2>Recent Waves</h2><button class="outline" onclick="clearWaves()">Clear</button></div>
+  <section class="waves" id="waveList"><div class="empty" id="empty">No waves yet. Find someone and wave! 👋</div></section>
+</main>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox">
+<button class="close" onclick="closeProfile()">×</button>
+<h2>Create your Waver profile</h2>
+<label>Display name</label><input id="pname" placeholder="Your name">
+<label>Social username</label><input id="phandle" placeholder="@yourusername">
+<label>Bio</label><textarea id="pbio" rows="3" placeholder="Tell people a little about you"></textarea>
+<button class="primary" style="width:100%;padding:13px;border-radius:10px" onclick="saveProfile()">Save Profile</button>
+</div></div>
+
+<script>
+const defaultUsers=[
+{name:"Zyrox",handle:"@zyrox",bio:"Gamer | Content Creator | Always grinding",avatar:"Z"},
+{name:"Luna",handle:"@luna.vibes",bio:"Love anime, music & late night talks",avatar:"L"},
+{name:"Maverick",handle:"@mav.travels",bio:"Travel. Explore. Make memories.",avatar:"M"},
+{name:"Nova",handle:"@novaa",bio:"Digital artist | Dreamer | Creating my world",avatar:"N"}
+];
+let users=JSON.parse(localStorage.getItem("waverUsers")||"null")||defaultUsers;
+let waves=JSON.parse(localStorage.getItem("waverWaves")||"[]");
+
+function renderUsers(list=users){
+ const q=document.getElementById("cards"); q.innerHTML="";
+ list.forEach((u,i)=>{q.innerHTML+=`<article class="card"><div class="avatar">${u.avatar||u.name[0]}</div><h3>${u.name}</h3><div class="handle">${u.handle}</div><div class="online">● Online</div><p class="bio">${u.bio}</p><div class="socials">Instagram &nbsp; • &nbsp; TikTok &nbsp; • &nbsp; Twitch</div><button class="wave ${waves.some(w=>w.handle===u.handle)?"waved":""}" onclick="waveAt('${u.handle}')">${waves.some(w=>w.handle===u.handle)?"✓ Waved":"👋 Wave"}</button></article>`})
+}
+function waveAt(handle){
+ const u=users.find(x=>x.handle===handle); if(!u)return;
+ if(!waves.some(w=>w.handle===handle)){waves.unshift({name:u.name,handle:u.handle,time:"just now"});localStorage.setItem("waverWaves",JSON.stringify(waves));}
+ renderWaves();renderUsers();document.getElementById("waveBadge").textContent=waves.length;
+}
+function renderWaves(){
+ const box=document.getElementById("waveList");box.innerHTML="";
+ document.getElementById("empty").style.display=waves.length?"none":"block";
+ waves.forEach((w,i)=>box.innerHTML+=`<div class="waveRow"><div class="mini">${w.name[0]}</div><div class="who"><b>${w.name} waved at you!</b><br><small>${w.time}</small></div><button class="outline" onclick="alert('Profile: ${w.name}\\n${w.handle}')">View Profile</button><button class="primary" style="padding:10px 18px;border-radius:9px" onclick="waveBack(${i})">Wave Back</button></div>`);
+}
+function waveBack(i){alert("👋 Wave back sent!");}
+function clearWaves(){waves=[];localStorage.setItem("waverWaves","[]");renderWaves();renderUsers();document.getElementById("waveBadge").textContent=0}
+function filterUsers(){let q=document.getElementById("search").value.toLowerCase();renderUsers(users.filter(u=>(u.name+u.handle+u.bio).toLowerCase().includes(q)))}
+function sortUsers(){if(document.getElementById("sort").value==="Name A–Z")renderUsers([...users].sort((a,b)=>a.name.localeCompare(b.name)));else renderUsers()}
+function openProfile(){document.getElementById("modal").classList.add("open")}
+function closeProfile(){document.getElementById("modal").classList.remove("open")}
+function saveProfile(){
+ let name=document.getElementById("pname").value.trim(),handle=document.getElementById("phandle").value.trim(),bio=document.getElementById("pbio").value.trim();
+ if(!name||!handle){alert("Please enter a name and social username.");return}
+ if(!handle.startsWith("@"))handle="@"+handle;
+ users.unshift({name,handle,bio:bio||"New to Waver 👋",avatar:name[0].toUpperCase()});
+ localStorage.setItem("waverUsers",JSON.stringify(users));renderUsers();closeProfile();
+ document.getElementById("pname").value=document.getElementById("phandle").value=document.getElementById("pbio").value="";
+}
+function scrollToWaves(){document.getElementById("waves").scrollIntoView({behavior:"smooth"})}
+renderUsers();renderWaves();document.getElementById("waveBadge").textContent=waves.length;
+</script>
+</body>
+</html>
