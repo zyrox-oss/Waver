@@ -84,7 +84,7 @@ function renderUsers(list=users){
  list.forEach((u,i)=>{q.innerHTML+=`<article class="card"><div class="avatar">${u.avatar||u.name[0]}</div><h3>${u.name}</h3><div class="handle">${u.handle}</div><div class="online">● Online</div><p class="bio">${u.bio}</p><div class="socials">Instagram &nbsp; • &nbsp; TikTok &nbsp; • &nbsp; Twitch</div><button class="wave ${waves.some(w=>w.handle===u.handle)?"waved":""}" onclick="waveAt('${u.handle}')">${waves.some(w=>w.handle===u.handle)?"✓ Waved":"👋 Wave"}</button></article>`})
 }
 
-function clearWaves()
+function waveAt(handle){
 
 const u=users.find(x=>x.handle===handle);
 if(!u)return;
