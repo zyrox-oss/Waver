@@ -104,10 +104,18 @@ renderUsers();
 document.getElementById("waveBadge").textContent=waves.length;
 
 }
+
 function renderWaves(){
- const box=document.getElementById("waveList");box.innerHTML="";
- document.getElementById("empty").style.display=waves.length?"none":"block";
- waves.forEach((w,i)=>box.innerHTML+=`<div class="waveRow"><div class="mini">${w.name[0]}</div><div class="who"><b>${w.name} waved at you!</b><br><small>${w.time}</small></div><button class="outline" onclick="alert('Profile: ${w.name}\\n${w.handle}')">View Profile</button><button class="primary" style="padding:10px 18px;border-radius:9px" onclick="waveBack(${i})">Wave Back</button></div>`);
+  const box=document.getElementById("waveList");
+
+  if(!waves.length){
+    box.innerHTML='<div class="empty" id="empty" style="display:block">No waves yet. Find someone and wave! 👋</div>';
+    return;
+  }
+
+  box.innerHTML="";
+
+  waves.forEach((w,i)=>box.innerHTML+=`<div class="waveRow"><div class="mini">${w.name[0]}</div><div class="who"><b>${w.name} waved at you!</b><br><small>${w.time}</small></div><button class="outline" onclick="alert('Profile: ${w.name}\\n${w.handle}')">View Profile</button><button class="primary" style="padding:10px 18px;border-radius:9px" onclick="waveBack(${i})">Wave Back</button></div>`);
 }
 function waveBack(i){alert("👋 Wave back sent!");}
 function clearWaves(){waves=[];localStorage.setItem("waverWaves","[]");renderWaves();renderUsers();document.getElementById("waveBadge").textContent=0}
