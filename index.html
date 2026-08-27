@@ -131,8 +131,18 @@ function saveProfile(){
  localStorage.setItem("waverUsers",JSON.stringify(users));renderUsers();closeProfile();
  document.getElementById("pname").value=document.getElementById("phandle").value=document.getElementById("pbio").value="";
 }
-function scrollToWaves(){document.getElementById("waves").scrollIntoView({behavior:"smooth"})}
-renderUsers();renderWaves();document.getElementById("waveBadge").textContent=waves.length;
-</script>
+
+async function sendWave() {
+  const { error } = await supabase
+    .from("waves")
+    .insert([{}]);
+
+  if (error) {
+    alert("Wave failed: " + error.message);
+    return;
+  }
+
+  alert("👋 Wave sent!");
+}</script>
 </body>
 </html>
